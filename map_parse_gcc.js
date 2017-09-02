@@ -144,9 +144,9 @@ var process_section = function (area, section, size, modulefn, decaddress, hexad
 	} else if (modulefn.match(/\/Nfc\.a/i)) {
 		module = "NFC";
 	}
-	else {
-		console.error("++" + area + ',' + module + ',' + section + ',' + size + ',' + "0x" + hexaddress + ',' + decaddress);
-	}
+	// else {
+	// 	console.error("++" + area + ',' + module + ',' + section + ',' + size + ',' + "0x" + hexaddress + ',' + decaddress);
+	// }
 
 	if (printall) {
 		console.log(area + ',' + module + ',' + section + ',' + size + ',' + "0x" + hexaddress + ',' + decaddress + ',' + modulefn);
@@ -325,7 +325,8 @@ while (content = reg.exec(mem_config)) {
 file = file.replace(/[\s\S]*Linker script and memory map([\s\S]*)/, "$1");
 
 // remove stuff below the memory map
-file = file.replace(/([\s\S]*)Cross Reference Table[\s\S]*/, "$1");
+// file = file.replace(/([\s\S]*)Cross Reference Table[\s\S]*/, "$1");
+file = file.replace(/([\s\S]*)OUTPUT[\s\S]*/, "$1");
 // fs.writeFileSync(get_target_name(filename) + ".dump", file);
 // fs.writeFileSync(filename + ".dump", file);
 
